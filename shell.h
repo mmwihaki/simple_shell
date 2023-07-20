@@ -2,7 +2,7 @@
 #define SHELL_H
 
 void set_program_name(char *argO);
-void display_prompt();
+void display_prompt(void);
 char *read_user_input();
 char *parse_command(char *input);
 char *search_executable(char *command);
