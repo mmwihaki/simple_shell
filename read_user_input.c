@@ -11,7 +11,6 @@
  *
  * Return: 0 (Success)
  */
-
 char *read_user_input()
 {
 	char user_input[MAX_INPUT_LENGTH];
@@ -25,9 +24,7 @@ char *read_user_input()
 		{
 			*new_line = '\0';
 		}
-
 		result = strdup(user_input);
-
 		return (result);
 	}
 	else
@@ -52,7 +49,6 @@ int main(void)
 	if (user_input != NULL)
 	{
 		printf("You entered: %s\n", user_input);
-
 		free(user_input);
 	}
 	else
