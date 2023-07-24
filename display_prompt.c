@@ -16,11 +16,11 @@ void display_prompt(void)
 
 	if (getcwd(cwd, sizeof(cwd)) != NULL)
 	{
-		printf("%s# ", cwd);
+		printf("%s$ ", cwd);
 	}
 	else
 	{
 		perror("getcwd");
-		printf("shell_error# ");
+		printf("shell_error$ ");
 	}
 }

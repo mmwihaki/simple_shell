@@ -15,17 +15,18 @@
 char *read_user_input()
 {
 	char user_input[MAX_INPUT_LENGTH];
+	char *result;
 
 	if (fgets(user_input, sizeof(user_input), stdin) != NULL)
 	{
-		char *new_line = strchr(user_input, '\n')
+		char *new_line = strchr(user_input, '\n');
 
 		if (new_line != NULL)
 		{
 			*new_line = '\0';
 		}
 
-		char *result = strdup(user_input);
+		result = strdup(user_input);
 
 		return (result);
 	}
