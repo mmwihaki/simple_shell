@@ -10,7 +10,7 @@
  * @command: command character
  * Return: 0 (Success)
  */
-void execute_command(char *command)
+void execute_command(char **command)
 {
 	pid_t process_id;
 	int status;
@@ -25,11 +25,7 @@ void execute_command(char *command)
 	}
 	else if (process_id == 0)
 	{
-		char **argv = (char **)malloc(2 * sizeof(char *));
-
-		argv[0] = command;
-		argv[1] = NULL;
-		execvp(command, argv);
+		execvp(command[0], command);
 		perror("execvp");
 		exit(EXIT_FAILURE);
 	}

@@ -8,9 +8,9 @@
 void shell_loop(void)
 {
 	char *input = read_user_input();
-	char *command = parse_command(input);
+	char **command = parse_command(input);
 	char *path = "/usr/bin:/bin";
-	char *executable_path = search_executable(command, path);
+	char *executable_path = search_executable(command[0], path);
 
 	while (1)
 	{
@@ -21,18 +21,23 @@ void shell_loop(void)
 			break;
 		}
 
-		free(input);
 		if (command == NULL)
 		{
+			free(input);
 			continue;
 		}
 
 		if (executable_path == NULL)
 		{
 			handle_error("shell", "command not found");
-			continue;
+		}
+		else
+		{
+			execute_command(command);
+			free(executable_path);
 		}
 
-		execute_command(executable_path);
+		free(input);
+		free(command);
 	}
 }

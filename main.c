@@ -9,7 +9,7 @@
 int main(void)
 {
 	char *user_input = NULL;
-	char *command = NULL;
+	char **command = NULL;
 
 	while (1)
 	{
@@ -28,6 +28,7 @@ int main(void)
 		{
 			execute_command(command);
 			free(command);
+
 		}
 		else
 		{
