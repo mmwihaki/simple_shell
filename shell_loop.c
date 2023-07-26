@@ -9,7 +9,8 @@ void shell_loop(void)
 {
 	char *input = read_user_input();
 	char *command = parse_command(input);
-	char *executable_path = search_executable(command);
+	char *path = "/usr/bin:/bin";
+	char *executable_path = search_executable(command, path);
 
 	while (1)
 	{

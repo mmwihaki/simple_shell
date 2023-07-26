@@ -7,10 +7,11 @@
 /**
  * search_executable - searching executable path of a given command
  * @command: command
+ * @path: path
  * description - search executable path
  * Return: Null
  */
-char *search_executable(char *command)
+char *search_executable(char *command, const char *path)
 {
 	char *executable_path = (char *)malloc(strlen(path) + strlen(command) + 3);
 
