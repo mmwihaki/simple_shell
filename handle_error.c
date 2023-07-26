@@ -9,5 +9,5 @@
  */
 void handle_error(const char *program_name, const char *error_message)
 {
-	fprintf(stderr, "%s: %s\n", program_name, error_massage);
+	fprintf(stderr, "%s: %s\n", program_name, error_message);
 }

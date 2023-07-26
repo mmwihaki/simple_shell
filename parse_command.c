@@ -9,7 +9,7 @@
  */
 char *parse_command(char *input)
 {
-	char *command = strtok(input, "\n"0);
+	char *command = strtok(input, "\n");
 
 	return (command);
 }

@@ -28,7 +28,7 @@ void shell_loop(void)
 
 		if (executable_path == NULL)
 		{
-			handle_error("command not found");
+			handle_error("shell", "command not found");
 			continue;
 		}
 
