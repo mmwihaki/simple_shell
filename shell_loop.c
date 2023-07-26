@@ -1,7 +1,11 @@
 #include <stdlib.h>
 #include "shell.h"
-
-void shell_loop()
+/**
+ * shell_loop - run shell
+ * description: run shell in an infinite loop
+ * Return: executable command
+ */
+void shell_loop(void)
 {
 	char *input = read_user_input();
 	char *command = parse_command(input);

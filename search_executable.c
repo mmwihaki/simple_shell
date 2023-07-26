@@ -1,5 +1,11 @@
 #include "shell.h"
-char *search_executabl(char *command)
+/**
+ * search_executable - searching executable path of a given command
+ * @command: command
+ * description - search executable path
+ * Return: Null
+ */
+char *search_executable(char *command)
 {
 	char *paths = getenv("PATH");
 	char *path = strtok(paths, ":");
@@ -14,7 +20,7 @@ char *search_executabl(char *command)
 	{
 		if (executable_path == NULL)
 		{
-			return (NULL)
+			return (NULL);
 		}
 
 		sprintf(executable_path, "%s/%s", path, command);
@@ -24,7 +30,7 @@ char *search_executabl(char *command)
 			return (executable_path);
 		}
 
-		free (executable_path);
+		free(executable_path);
 		path = strtok(NULL, ":");
 	}
 
