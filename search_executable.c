@@ -7,32 +7,21 @@
  */
 char *search_executable(char *command)
 {
-	char *paths = getenv("PATH");
-	char *path = strtok(paths, ":");
-	char *executable_path = (char *)malloc(strlen(path) + strlen(command) + 2);
+	char *executable_path = (char *)malloc(strlen(path) + strlen(command) + 3);
 
-	if (paths == NULL)
+	if (executable_path == nULL)
 	{
+		perror("malloc");
 		return (NULL);
 	}
 
-	while (path != NULL)
+	sprintf(executable_path, "./%s", command);
+
+	if (access(executable_path, X_OK) == 0)
 	{
-		if (executable_path == NULL)
-		{
-			return (NULL);
-		}
-
-		sprintf(executable_path, "%s/%s", path, command);
-
-		if (access(executable_path, X_OK) == 0)
-		{
-			return (executable_path);
-		}
-
-		free(executable_path);
-		path = strtok(NULL, ":");
+		return (exacutable_path);
 	}
 
+	free(executable_path);
 	return (NULL);
 }
