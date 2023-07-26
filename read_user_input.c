@@ -11,7 +11,7 @@
  *
  * Return: 0 (Success)
  */
-char *read_user_input()
+char *read_user_input(void)
 {
 	char user_input[MAX_INPUT_LENGTH];
 	char *result;
@@ -31,29 +31,4 @@ char *read_user_input()
 	{
 		return (NULL);
 	}
-}
-
-/**
- * main - main entry point
- *
- * Return: 0 (Success)
- */
-int main(void)
-{
-	char *user_input;
-
-	printf("Enter your user input: ");
-
-	user_input = read_user_input();
-
-	if (user_input != NULL)
-	{
-		printf("You entered: %s\n", user_input);
-		free(user_input);
-	}
-	else
-	{
-		printf("Error reading user input.\n");
-	}
-	return (0);
 }
