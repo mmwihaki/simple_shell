@@ -17,7 +17,7 @@ void set_program_name(char *arg0)
 
 	if (get_len > 15)
 	{
-		argO[15] = '\0';
+		arg0[15] = '\0';
 	}
 
 	prctl(PR_SET_MM, PR_SET_MM_ARG_START, arg0, 0, 0);
