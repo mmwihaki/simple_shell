@@ -11,14 +11,14 @@
  * Return: 0 (Success)
  */
 
-void set_program_name(char *argO)
+void set_program_name(char *arg0)
 {
-	size_t get_len = strlen(argO);
+	size_t get_len = strlen(arg0);
 
 	if (get_len > 15)
 	{
 		argO[15] = '\0';
 	}
 
-	prctl(PR_SET_MM, PR_SET_MM_ARG_START, argO, 0, 0);
+	prctl(PR_SET_MM, PR_SET_MM_ARG_START, arg0, 0, 0);
 }

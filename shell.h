@@ -1,7 +1,7 @@
 #ifndef SHELL_H
 #define SHELL_H
 
-void set_program_name(char *argO);
+void set_program_name(char *arg0);
 void display_prompt(void);
 char *read_user_input();
 char *parse_command(char *input);
