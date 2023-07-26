@@ -25,12 +25,12 @@ void execute_command(char *command)
 	}
 	else if (process_id == 0)
 	{
-		char *argv[3] = {command, NULL, NULL};
+		char **argv = (char **)malloc(2 * sizeof(char *));
 
+		argv[0] = command;
+		argv[1] = NULL;
 		execvp(command, argv);
-
 		perror("execvp");
-
 		exit(EXIT_FAILURE);
 	}
 	else
