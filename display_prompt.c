@@ -21,6 +21,7 @@ void display_prompt(void)
 	else
 	{
 		perror("getcwd");
+
 		printf("shell_error $ ");
 	}
 }
