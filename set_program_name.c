@@ -7,7 +7,7 @@
 
 /**
  * set_program_name - sets program name
- * @argO: argument
+ * @arg0: argument
  * Return: 0 (Success)
  */
 

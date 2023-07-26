@@ -11,7 +11,7 @@ int main(void)
 	char *user_input = NULL;
 	char *command = NULL;
 
-	while(1)
+	while (1)
 	{
 		display_prompt();
 
