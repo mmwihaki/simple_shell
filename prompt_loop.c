@@ -33,5 +33,7 @@ void prompt_loop(void)
 		}
 
 		execute_command(line);
+
+		printf("\n");
 	}
 }
