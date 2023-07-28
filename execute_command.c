@@ -1,49 +1,37 @@
+#include "shell.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include "shell.h"
-#include <string.h>
 /**
- * execute_command - executes commands
- * @command: command character
- * Return: 0 (Success)
+ * execute_command - execute command
+ * @command: command
+ * Return: Void
  */
-void execute_command(char **command)
+void execute_command(char *command)
 {
-	pid_t process_id;
-	int status;
+	char *command_path = search_path(command);
 
-	process_id = fork();
-
-	if (process_id < 0)
+	if (strcmp(command, "exit") == 0)
 	{
-		perror("fork");
-
-		exit(EXIT_FAILURE);
+		printf("Exiting the shell...\n");
+		exit(0);
 	}
-	else if (process_id == 0)
+	else if (strcmp(command, "env") == 0)
 	{
-		execvp(command[0], command);
-		perror("execvp");
-		exit(EXIT_FAILURE);
+		print_environment();
+		return;
 	}
-	else
+
+	if (command_path == NULL)
 	{
-		waitpid(process_id, &status, 0);
-
-		if (WIFEXITED(status))
-		{
-			int status_exit = WEXITSTATUS(status);
-
-			printf("Command status exited: %d\n", status_exit);
-		}
-		else if (WIFSIGNALED(status))
-		{
-			int final_signal = WTERMSIG(status);
-
-			printf("Command signal termination: %d\n", final_signal);
-		}
+		fprintf(stderr, "%s: command not found\n", command);
+		return;
 	}
+
+	execute_external_command(command, command_path);
+
+	free(command_path);
 }

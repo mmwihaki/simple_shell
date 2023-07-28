@@ -1,13 +1,17 @@
 #ifndef SHELL_H
 #define SHELL_H
 
-void set_program_name(char *arg0);
-void display_prompt(void);
-char *read_user_input(void);
-char **parse_command(char *input);
-char *search_executable(char *command, const char *path);
-void execute_command(char **command);
-void handle_error(const char *program_name, const char *error_messsage);
-void shell_loop(void);
+#include <stdlib.h>
+
+#ifdef __unix__
+extern char **environ;
+#endif
+void execute_external_command(char *command, char *command_path);
+void wait_for_child_process(pid_t pid, int *status);
+void prompt_loop(void);
+char **split_arguments(char *line);
+char *search_path(char *command);
+void print_environment(void);
+void execute_command(char *command);
 
 #endif
