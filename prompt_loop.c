@@ -15,10 +15,15 @@ void prompt_loop(void)
 	char *line;
 	char buffer[BUFFER_SIZE];
 	size_t bufsize = BUFFER_SIZE;
+	int output_mode = 0;
 
 	while (1)
 	{
-		printf("($) ");
+		if (output_mode == 0)
+		{
+			printf("($) ");
+		}
+
 		line = fgets(buffer, bufsize, stdin);
 
 		if (line == NULL)
