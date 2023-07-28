@@ -34,6 +34,8 @@ void prompt_loop(void)
 
 		execute_command(line);
 
+		output_mode = 1;
+
 		printf("\n");
 	}
 }
