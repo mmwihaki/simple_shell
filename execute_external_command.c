@@ -28,7 +28,7 @@ void execute_external_command(char *command, char *command_path)
 
 	if (pid == 0)
 	{
-		if (execve(command_path, args, NULL) == -1)
+		if (execve(command_path, args, environ) == -1)
 		{
 			perror(command_path);
 			free(args);

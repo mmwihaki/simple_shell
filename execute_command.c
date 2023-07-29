@@ -22,6 +22,7 @@ void execute_command(char *command)
 	else if (strcmp(command, "env") == 0)
 	{
 		print_environment();
+		free(command_path);
 		return;
 	}
 
